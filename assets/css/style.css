@@ -1,0 +1,74 @@
+.jumbotron {
+    background-image: url(../images/coffeehouse-gd1191e4c9_1920.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: calc(50vh - 25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .jumbotron h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .jumbotron p, .sectionHeading {
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    margin: 20px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Nunito Sans', sans-serif;
+    color:aliceblue
+  }
+  .jumbotron .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #input-selector {
+    width: 50%;
+    padding: 10px;
+    margin: 20px 0;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  #submit-button {
+    width: 50%;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #000509e3;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  #submit-button:hover {
+    background-color: #087aec;
+    transform: scale(1.05);
+  }
+  
+
+
+
+

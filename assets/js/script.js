@@ -39,7 +39,7 @@ function queryCoffeesFromGeocodeResponse (response) {
     for (var i = 0; i < coffeePlace.length; i++) {
       coffeeBlock = $("<div>");
       coffeeBlock.css({
-        "background-color": "green",
+        "background-color": "black",
         color: "white",
         padding: "10px",
         border: "solid white",
