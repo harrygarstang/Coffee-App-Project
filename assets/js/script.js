@@ -1,13 +1,17 @@
 // when button is clicked, the function starts
 $("button").on("click", function() {
   console.log(city)
+
   var city = $("#input-selector").val()
   var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + myKey
+
 $.ajax({
   url: geocodeUrl,
   method: "GET"
-}).then (queryCoffeesFromGeocodeResponse);
+}).then (queryCoffeesFromGeocodeResponse); 
+
 });
+
 // function that query coffees in the location searched
 function queryCoffeesFromGeocodeResponse (response) {
   var latitude = response.results[0].geometry.location.lat;
@@ -27,10 +31,18 @@ function queryCoffeesFromGeocodeResponse (response) {
       console.log(coffeeName);
       console.log(rating);
       // add to html
+      
+  
       // add the coffee name and rating to the div
+  
+
       $('#shop1').text("Coffee shop: " + coffeeName + "Rating: " +  rating);
+  
       // append the div to the container
+    
+    
     }
+  
   }
 )
 };
