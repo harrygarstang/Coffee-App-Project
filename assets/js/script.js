@@ -12,6 +12,8 @@ $.ajax({
 
 });
 
+
+
 // function that query coffees in the location searched
 function queryCoffeesFromGeocodeResponse (response) {
   
@@ -35,6 +37,8 @@ function queryCoffeesFromGeocodeResponse (response) {
       (coffeePlace3 = response.results[3].name),
       (coffeePlace4 = response.results[4].name)
     ];
+
+  
     // loop through the results in the response data
     for (var i = 0; i < coffeePlace.length; i++) {
       coffeeBlock = $("<div>");
@@ -46,14 +50,21 @@ function queryCoffeesFromGeocodeResponse (response) {
       });
       // get the coffee name and rating
 
+      
       var rating = response.results[i].rating;
       var address = response.results[i].vicinity;
+
+           // appending content to each card
       
-      coffeeBlock.append("<h5>Coffee Shop: </h5>" + coffeePlace[i])
-      coffeeBlock.append("<h5>Rating: </h5>" + rating)
-      coffeeBlock.append("<h5>Address: </h5>"+ address)
+      coffeeBlock.append("<h6>Coffee Shop: </h6>" + coffeePlace[i])
+      coffeeBlock.append("<h6>Rating: </h6>" + rating)
+      coffeeBlock.append("<h6>Address: </h6>"+ address)
       
       suggestion.append(coffeeBlock)
+ 
+ 
+
+      
   
       // add the coffee name and rating to the div
 
