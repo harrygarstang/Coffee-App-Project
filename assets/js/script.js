@@ -67,7 +67,7 @@ function queryCoffeesFromGeocodeResponse (response) {
 
            // appending content to each card
       
-      coffeeBlock.append("<h6>Coffee Shop: </h6>" + coffeePlace[i])
+      coffeeBlock.append("<h6>Recommendation: </h6>" + coffeePlace[i])
       coffeeBlock.append("<h6>Rating: </h6>" + rating)
       coffeeBlock.append("<h6>Address: </h6>"+ address)
       coffeeBlock.append("<h6>Opening hours: </h6>" + message)
