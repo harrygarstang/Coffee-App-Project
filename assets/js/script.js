@@ -54,11 +54,23 @@ function queryCoffeesFromGeocodeResponse (response) {
       var rating = response.results[i].rating;
       var address = response.results[i].vicinity;
 
+      var openingHours = response.results[i].opening_hours.open_now
+      console.log(openingHours)
+      if (openingHours) {
+        message = "Open now"
+      }
+      else {
+        message = "Closed"
+      }
+      var openMessage = $("<p>")
+      openMessage.text(message)
+
            // appending content to each card
       
       coffeeBlock.append("<h6>Coffee Shop: </h6>" + coffeePlace[i])
       coffeeBlock.append("<h6>Rating: </h6>" + rating)
       coffeeBlock.append("<h6>Address: </h6>"+ address)
+      coffeeBlock.append("<h6>Opening hours: </h6>" + message)
       
       suggestion.append(coffeeBlock)
  
