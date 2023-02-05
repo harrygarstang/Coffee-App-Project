@@ -41,7 +41,7 @@ function queryCoffeesFromGeocodeResponse (response) {
   
     // loop through the results in the response data
     for (var i = 0; i < coffeePlace.length; i++) {
-      coffeeBlock = $("<div>");
+      coffeeBlock = $("<ul>");
       coffeeBlock.css({
         "background-color": "black",
         color: "white",
