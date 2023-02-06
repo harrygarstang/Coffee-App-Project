@@ -1,34 +1,42 @@
 // when button is clicked, the function starts
-$("button").on("click", function() {
-  console.log(city)
+$("button").on("click", function () {
+  console.log(city);
 
-  var city = $("#input-selector").val()
-  var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=" + myKey
+  var city = $("#input-selector").val();
+  var geocodeUrl =
+    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+    city +
+    "&key=" +
+    myKey;
 
-$.ajax({
-  url: geocodeUrl,
-  method: "GET"
-}).then (queryCoffeesFromGeocodeResponse); 
-
+  $.ajax({
+    url: geocodeUrl,
+    method: "GET",
+  }).then(queryCoffeesFromGeocodeResponse);
 });
 
-
-
 // function that query coffees in the location searched
-function queryCoffeesFromGeocodeResponse (response) {
+function queryCoffeesFromGeocodeResponse(response) {
   clear();
-  
+
   var latitude = response.results[0].geometry.location.lat;
   var longitude = response.results[0].geometry.location.lng;
 
   // build queryurl
-  var queryUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=500&types=cafe" + "&key=" + myKey
-  console.log(queryUrl)
+  var queryUrl =
+    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+    latitude +
+    "," +
+    longitude +
+    "&radius=500&types=cafe" +
+    "&key=" +
+    myKey;
+  console.log(queryUrl);
 
   $.ajax({
     url: queryUrl,
-    method: "GET"
-  }).then(function(response) {
+    method: "GET",
+  }).then(function (response) {
     var suggestion = $("#suggestion");
 
     var coffeePlace = [
@@ -36,10 +44,9 @@ function queryCoffeesFromGeocodeResponse (response) {
       (coffeePlace2 = response.results[1].name),
       (coffeePlace3 = response.results[2].name),
       (coffeePlace3 = response.results[3].name),
-      (coffeePlace4 = response.results[4].name)
+      (coffeePlace4 = response.results[4].name),
     ];
 
-  
     // loop through the results in the response data
     for (var i = 0; i < coffeePlace.length; i++) {
       coffeeBlock = $("<div>");
@@ -56,41 +63,29 @@ function queryCoffeesFromGeocodeResponse (response) {
 
       $("#article-section").append($coffeeList);
 
-      var openingHours = response.results[i].opening_hours.open_now
-      console.log(openingHours)
+      var openingHours = response.results[i].opening_hours.open_now;
+      console.log(openingHours);
       if (openingHours) {
-        message = "Open now"
+        message = "Open now";
+      } else {
+        message = "Closed";
       }
-      else {
-        message = "Closed"
-      }
-      var openMessage = $("<p>")
-      openMessage.text(message)
+      var openMessage = $("<p>");
+      openMessage.text(message);
 
       var $articleListItem = $("<li class='list-group-item articleHeadline'>");
       var rating = response.results[i].rating;
       var address = response.results[i].vicinity;
 
-      $articleListItem.append("<h6>Recommendation: </h6>" + coffeePlace[i])
-      $articleListItem.append("<h6>Rating: </h6>" + rating)
-      $articleListItem.append("<h6>Address: </h6>"+ address)
-      $articleListItem.append("<h6>Opening hours: </h6>" + message)
+      $articleListItem.append("<h5>Recommendation: </h5>" + coffeePlace[i]);
+      $articleListItem.append("<h5>Rating: </h5>" + rating);
+      $articleListItem.append("<h5>Address: </h5>" + address);
+      $articleListItem.append("<h5>Opening hours: </h5>" + message);
 
       $coffeeList.append($articleListItem);
- 
-      
-  
-      // add the coffee name and rating to the div
-
-  
-      // append the div to the container
-    
-    
     }
-  
-  }
-)
-};
+  });
+}
 
 // Function to empty out the articles
 function clear() {
