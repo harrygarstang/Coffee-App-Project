@@ -38,7 +38,7 @@ function queryCoffeesFromGeocodeResponse(response) {
     url: queryUrl,
     method: "GET",
   }).then(function (response) {
-
+    console.log(response)
     var coffeePlace = [
       (coffeePlace1 = response.results[0].name),
       (coffeePlace2 = response.results[1].name),
@@ -62,8 +62,9 @@ function queryCoffeesFromGeocodeResponse(response) {
       $coffeeList.addClass("list-group");
 
       $("#cafe-section").append($coffeeList);
+      
 
-      var openingHours = response.results[i].opening_hours.open_now;
+      var openingHours = response.results[i].opening_hours?.open_now
       console.log(openingHours);
       if (openingHours) {
         message = "Open now";
