@@ -17,6 +17,7 @@ $("button").on("click", function () {
 
 // function that query coffees in the location searched
 function queryCoffeesFromGeocodeResponse(response) {
+  // remove current recommendations
   clear();
 
   var latitude = response.results[0].geometry.location.lat;
@@ -37,7 +38,6 @@ function queryCoffeesFromGeocodeResponse(response) {
     url: queryUrl,
     method: "GET",
   }).then(function (response) {
-    var suggestion = $("#suggestion");
 
     var coffeePlace = [
       (coffeePlace1 = response.results[0].name),
@@ -61,7 +61,7 @@ function queryCoffeesFromGeocodeResponse(response) {
       var $coffeeList = $("<ul>");
       $coffeeList.addClass("list-group");
 
-      $("#article-section").append($coffeeList);
+      $("#cafe-section").append($coffeeList);
 
       var openingHours = response.results[i].opening_hours.open_now;
       console.log(openingHours);
@@ -77,10 +77,10 @@ function queryCoffeesFromGeocodeResponse(response) {
       var rating = response.results[i].rating;
       var address = response.results[i].vicinity;
 
-      $articleListItem.append("<h5>Recommendation: </h5>" + coffeePlace[i]);
-      $articleListItem.append("<h5>Rating: </h5>" + rating);
-      $articleListItem.append("<h5>Address: </h5>" + address);
-      $articleListItem.append("<h5>Opening hours: </h5>" + message);
+      $articleListItem.append("<h3>" + coffeePlace[i] + "</h3>");
+      $articleListItem.append("<h4>Rating: " + rating + "</h4>");
+      $articleListItem.append("<h4>Address: " + address + "</h4>");
+      $articleListItem.append("<h4>Opening hours: " + message + "</h4>");
 
       $coffeeList.append($articleListItem);
     }
@@ -89,5 +89,5 @@ function queryCoffeesFromGeocodeResponse(response) {
 
 // Function to empty out the articles
 function clear() {
-  $("#suggestion").empty();
+  $("#cafe-section").empty();
 }
