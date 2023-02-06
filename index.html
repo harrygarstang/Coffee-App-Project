@@ -68,6 +68,27 @@
     <h2 class="nearby">Here's what's nearby</h2>
     <section id="suggestion" class="row mt-3" role="region" aria-live="polite"></section>
 
+    <!-- This row will handle all of the retrieved articles -->
+    <div class="row">
+        <div class="col-sm-12">
+          <br>
+  
+          <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+          <div class="card">
+  
+            <!-- card Heading for the retrieved articles box -->
+            <div class="card-header">
+              <strong>
+                <i class="fa fa-table"></i> Top Suggestions</strong>
+            </div>
+  
+            <!-- This main card will hold each of the resulting articles -->
+            <div class="card-body" id="article-section">
+            </div>
+          </div>
+        </div>
+      </div>
+
     <!-- Links to JS -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="./assets/js/keys.js"></script>

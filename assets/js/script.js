@@ -49,11 +49,12 @@ function queryCoffeesFromGeocodeResponse (response) {
         padding: "10px",
         border: "solid white",
       });
-      // get the coffee name and rating
+      // test
 
-      
-      var rating = response.results[i].rating;
-      var address = response.results[i].vicinity;
+      var $coffeeList = $("<ul>");
+      $coffeeList.addClass("list-group");
+
+      $("#article-section").append($coffeeList);
 
       var openingHours = response.results[i].opening_hours.open_now
       console.log(openingHours)
@@ -66,17 +67,17 @@ function queryCoffeesFromGeocodeResponse (response) {
       var openMessage = $("<p>")
       openMessage.text(message)
 
-           // appending content to each card
-      
-      coffeeBlock.append("<h6>Recommendation: </h6>" + coffeePlace[i])
-      coffeeBlock.append("<h6>Rating: </h6>" + rating)
-      coffeeBlock.append("<h6>Address: </h6>"+ address)
-      coffeeBlock.append("<h6>Opening hours: </h6>" + message)
-      
-      suggestion.append(coffeeBlock)
- 
- 
+      var $articleListItem = $("<li class='list-group-item articleHeadline'>");
+      var rating = response.results[i].rating;
+      var address = response.results[i].vicinity;
 
+      $articleListItem.append("<h6>Recommendation: </h6>" + coffeePlace[i])
+      $articleListItem.append("<h6>Rating: </h6>" + rating)
+      $articleListItem.append("<h6>Address: </h6>"+ address)
+      $articleListItem.append("<h6>Opening hours: </h6>" + message)
+
+      $coffeeList.append($articleListItem);
+ 
       
   
       // add the coffee name and rating to the div
