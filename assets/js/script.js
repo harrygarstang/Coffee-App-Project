@@ -16,6 +16,7 @@ $.ajax({
 
 // function that query coffees in the location searched
 function queryCoffeesFromGeocodeResponse (response) {
+  clear();
   
   var latitude = response.results[0].geometry.location.lat;
   var longitude = response.results[0].geometry.location.lng;
@@ -41,7 +42,7 @@ function queryCoffeesFromGeocodeResponse (response) {
   
     // loop through the results in the response data
     for (var i = 0; i < coffeePlace.length; i++) {
-      coffeeBlock = $("<ul>");
+      coffeeBlock = $("<div>");
       coffeeBlock.css({
         "background-color": "black",
         color: "white",
@@ -89,3 +90,8 @@ function queryCoffeesFromGeocodeResponse (response) {
   }
 )
 };
+
+// Function to empty out the articles
+function clear() {
+  $("#suggestion").empty();
+}
