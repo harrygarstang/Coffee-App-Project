@@ -7,7 +7,7 @@ $("button").on("click", function () {
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     city +
     "&key=" +
-    GOOGLEAPIKEY;
+    myKey;
 
   $.ajax({
     url: geocodeUrl,
