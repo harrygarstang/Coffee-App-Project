@@ -1,8 +1,12 @@
-// when button is clicked, the function starts
-$("button").on("click", function () {
-  console.log(city);
 
+renderButtons();
+
+$("button").on("click", function (event) {
   var city = $("#input-selector").val();
+  event.preventDefault();
+  addToStorage(city);
+  renderButtons();
+  localStorage.setItem("city", city);
   var geocodeUrl =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     city +
@@ -14,6 +18,41 @@ $("button").on("click", function () {
     method: "GET",
   }).then(queryCoffeesFromGeocodeResponse);
 });
+
+
+
+// Local storage 
+// function that adds new value to array in local storage
+function addToStorage(newValue) {
+  var searchedCities = JSON.parse(localStorage.getItem("searched")) || [];
+  if (searchedCities.includes(newValue)) {
+    return;
+  }
+  searchedCities.push(newValue);
+  localStorage.setItem("searched", JSON.stringify(searchedCities));
+}
+
+function renderButtons() {
+  var searchedCities = JSON.parse(localStorage.getItem("searched")) || [];
+  console.log(searchedCities);
+  if (!searchedCities) {
+    localStorage.setItem("searched", JSON.stringify([]));
+    return;
+  }
+  $("#history-list").empty()
+  for (let i = 0; i < searchedCities.length; i++) {
+    console.log(searchedCities[i]);
+    var newCity = $("<button>");
+    newCity.text(searchedCities[i]);
+    $("#history-list").append(newCity);
+    newCity.click(function () {
+      queryCoffeesFromGeocodeResponse(this.innerHTML);
+    });
+  }
+}
+
+
+
 
 // function that query coffees in the location searched
 function queryCoffeesFromGeocodeResponse(response) {
@@ -62,7 +101,7 @@ function queryCoffeesFromGeocodeResponse(response) {
       $coffeeList.addClass("list-group");
 
       $("#cafe-section").append($coffeeList);
-      
+
 
       var openingHours = response.results[i].opening_hours?.open_now
       console.log(openingHours);
@@ -92,3 +131,12 @@ function queryCoffeesFromGeocodeResponse(response) {
 function clear() {
   $("#cafe-section").empty();
 }
+
+// Clear history button 
+
+$("#clearHistory").on("click", function () {
+  // emptying space for new data to appear
+  $("#history-list").empty();
+  localStorage.clear();
+
+})
