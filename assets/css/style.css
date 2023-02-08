@@ -79,8 +79,10 @@
     background-color: #087aec;
     transform: scale(1.05);
   }
-  
 
+  /* size for images */
 
-
-
+  .small {
+    width: 200px !important;
+    height: auto !important;
+}
