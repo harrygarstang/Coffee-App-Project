@@ -47,7 +47,7 @@ SO THAT I can get my coffee fix in the coolest places anywhere i go
 
 The following image shows the web application's appearance and functionality:
 
-![The Coffee Curator app includes a search option and a list of five coffee shops for the current user location.](./assets/10-server-side-apis-challenge-demo.png)
+![The Coffee Curator app includes a search option and a list of five coffee shops for the current user location.](./assets/images/project-demo.png)
 
 ## Knowledge Applied
 
@@ -60,6 +60,8 @@ The following image shows the web application's appearance and functionality:
 * Generate page elements based on API responses.
 * Make successful calls to 2 Google Maps APIs and use the data-rich JSON output to update the dashboard with the name of the coffe shop, address, and customer rating.
 
+## Challenge
+The website functions properly after you install [Allow CORS](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) and [CORS Unblock](https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en) Chrome extensions.
 ## Result
 
 * The URL of the functional, deployed application is [here](https://harrygarstang.github.io/Coffee-App-Project/).
